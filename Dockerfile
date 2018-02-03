@@ -17,7 +17,7 @@ ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 # Define working directory.
 WORKDIR $ELASTICSEARCH_PATH
 # Define default command.
-CMD ["bin/elasticsearch"]
+CMD ["/usr/share/elasticsearch/bin/elasticsearch"]
 # Expose ports.
 #   - 9200: HTTP
 #   - 9300: transport
