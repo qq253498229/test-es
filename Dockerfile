@@ -8,8 +8,9 @@ RUN \
   cd / && \
   wget https://artifacts.elastic.co/downloads/elasticsearch/$ELASTICSEARCH_VERSION.tar.gz && \
   tar xvzf $ELASTICSEARCH_VERSION.tar.gz && \
-  rm -f $ELASTICSEARCH_VERSION.tar.gz && \
-  mv $ELASTICSEARCH_VERSION $ELASTICSEARCH_PATH
+  rm -rf $ELASTICSEARCH_VERSION.tar.gz && \
+  mv $ELASTICSEARCH_VERSION/* $ELASTICSEARCH_PATH && \
+  rm -rf $ELASTICSEARCH_VERSION
 # Define mountable directories.
 VOLUME ["$ELASTICSEARCH_PATH/data"]
 # Mount elasticsearch.yml config
@@ -17,7 +18,7 @@ ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 # Define working directory.
 WORKDIR $ELASTICSEARCH_PATH
 # Define default command.
-CMD ["/usr/share/elasticsearch/bin/elasticsearch"]
+CMD ["bin/elasticsearch"]
 # Expose ports.
 #   - 9200: HTTP
 #   - 9300: transport
