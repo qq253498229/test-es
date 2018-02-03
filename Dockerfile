@@ -6,10 +6,10 @@ ENV ELASTICSEARCH_PATH /usr/share/elasticsearch
 RUN \
   mkdir -p $ELASTICSEARCH_PATH && \
   cd $ELASTICSEARCH_PATH && \
-  wget https://download.elasticsearch.org/elasticsearch/elasticsearch/$ELASTICSEARCH_VERSION.tar.gz && \
+  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.7.tar.gz && \
   tar xvzf $ELASTICSEARCH_VERSION.tar.gz && \
   rm -f $ELASTICSEARCH_VERSION.tar.gz && \
-  mv /$ELASTICSEARCH_VERSION $ELASTICSEARCH_PATH
+  mv $ELASTICSEARCH_VERSION $ELASTICSEARCH_PATH
 # Define mountable directories.
 VOLUME ["$ELASTICSEARCH_PATH/data"]
 # Mount elasticsearch.yml config
